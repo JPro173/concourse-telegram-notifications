@@ -1,6 +1,19 @@
 ---
 platform: linux
 
+resource_types:
+- name: telegram-notification
+  type: docker-image
+  source:
+    repository: w32blaster/concourse-telegram-notifier
+    tag: latest
+
+resources:
+- name: telegram-notification
+  type: telegram-notification
+  source:
+    bot_token: "352650512:AAFrAIleBG1GYfvcuCiBAkVRzoIq2zsc9zE"
+
 image_resource:
   type: docker-image
   source:
@@ -9,6 +22,12 @@ image_resource:
 
 inputs:
 - name: project
+
+outputs:
+- name: telegram-notification
+  params:
+    chat_id: -1001100069062
+    text: "Task started $uri"
 
 run:
   path: project/ci/scripts/example-task.sh

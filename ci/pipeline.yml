@@ -1,15 +1,4 @@
-resource_types:
-- name: telegram-notification
-  type: docker-image
-  source:
-    repository: w32blaster/concourse-telegram-notifier
-    tag: latest
-
 resources:
-- name: telegram-notification
-  type: telegram-notification
-  source:
-    bot_token: "352650512:AAFrAIleBG1GYfvcuCiBAkVRzoIq2zsc9zE"
 - name: project
   type: git
   source:
@@ -21,19 +10,5 @@ jobs:
   public: true
   plan:
   - get: project
-  - put: telegram-notification
-    params:
-      chat_id: -1001100069062
-      text: "Task started $uri"
   - task: example
     file: project/ci/tasks/example_task.yml
-    on_failure:
-      put: telegram-notification
-      params:
-        chat_id: -1001100069062
-        text: "Fail"
-    on_success:
-      put: telegram-notification
-      params:
-        chat_id: -1001100069062
-        text: "Success"
