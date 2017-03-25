@@ -10,10 +10,10 @@ image_resource:
 inputs:
 - name: project
 
-outputs:
-- name: telegram-notification
+put: telegram-notification
+params:
   chat_id: -1001100069062
-  text: "Task started $uri"
+  text: "123"
 
 run:
   path: project/ci/scripts/example-task.sh
