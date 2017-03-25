@@ -1,4 +1,15 @@
+resource_types:
+- name: telegram-notification
+  type: docker-image
+  source:
+    repository: w32blaster/concourse-telegram-notifier
+    tag: latest
+
 resources:
+- name: telegram-notification
+  type: telegram-notification
+  source:
+    bot_token: "352650512:AAFrAIleBG1GYfvcuCiBAkVRzoIq2zsc9zE"
 - name: project
   type: git
   source:
@@ -10,5 +21,6 @@ jobs:
   public: true
   plan:
   - get: project
+  - get: telegram-notification
   - task: example
     file: project/ci/tasks/example_task.yml
