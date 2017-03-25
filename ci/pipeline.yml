@@ -24,7 +24,7 @@ jobs:
   - put: telegram-notification
     params:
       chat_id: -1001100069062
-      text: "Task started"
+      text: "Task started $uri"
   - task: example
     file: project/ci/tasks/example_task.yml
     on_failure:
