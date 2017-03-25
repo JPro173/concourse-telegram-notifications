@@ -20,16 +20,17 @@ jobs:
 - name: example_task
   public: true
   plan:
-  - run:
-    path: sh
   - put: telegram-notification
     params:
       chat_id: -1001100069062
-      text: "321"
+      text: "123${CHAT_ID}"
   - get: project
   - task: example
     file: project/ci/tasks/example_task.yml
+  - run:
+    path: export
+    args: [VAR=123]
   - put: telegram-notification
     params:
       chat_id: -1001100069062
-      text: "123$user"
+      text: "321${VARR}"

@@ -11,4 +11,5 @@ inputs:
 - name: project
 
 run:
-  path: project/ci/scripts/example-task.sh
+  path: export
+  args: [VAR=123]
