@@ -23,10 +23,17 @@ jobs:
   - get: project
   - put: telegram-notification
     params:
-      chat_id: "-1001100069062"
-      message: "Ok"
+      chat_id: -1001100069062
+      text: "Task started"
   - task: example
     file: project/ci/tasks/example_task.yml
     on_failure:
-      task: alert-failure
-      file: project/ci/scripts/alert-failure.sh
+      put: telegram-notification
+      params:
+        chat_id: -1001100069062
+        text: "Fail"
+    on_success:
+      put: telegram-notification
+      params:
+        chat_id: -1001100069062
+        text: "Success"
