@@ -20,8 +20,11 @@ jobs:
 - name: example_task
   public: true
   plan:
+  - put: telegram-notification
+    params:
+      chat_id: -1001100069062
+      text: "321"
   - get: project
-  - get: telegram-notification
   - task: example
     file: project/ci/tasks/example_task.yml
   - put: telegram-notification
