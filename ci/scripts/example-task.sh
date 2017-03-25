@@ -1,7 +1,7 @@
 #!/bin/sh
 set -x -e
 
-source /docker-lib.sh
+source project/ci/scripts/docker-lib.sh
 start_docker
 
 docker load -i redis/image
