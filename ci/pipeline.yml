@@ -9,7 +9,7 @@ resources:
 - name: telegram-notification
   type: telegram-notification
   source:
-    bot_token: ""
+    bot_token: "352650512:AAFrAIleBG1GYfvcuCiBAkVRzoIq2zsc9zE"
 - name: project
   type: git
   source:
@@ -21,8 +21,11 @@ jobs:
   public: true
   plan:
   - get: project
-  - put: telegram-notifications
-  - task: build-project
+  - put: telegram-notification
+    params:
+      chat_id: "-1001100069062"
+      message: "Ok"
+  - task: example
     file: project/ci/tasks/example_task.yml
     on_failure:
       task: alert-failure

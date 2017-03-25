@@ -10,8 +10,5 @@ image_resource:
 inputs:
 - name: project
 
-ouptputs:
-- name: artifact
-
 run:
   path: project/ci/scripts/example-task.sh
