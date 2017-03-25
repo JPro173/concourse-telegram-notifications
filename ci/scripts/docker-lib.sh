@@ -70,12 +70,7 @@ start_docker() {
 
   trap stop_docker EXIT
 
-  sleep 1
-
-  until docker info >/dev/null 2>&1; do
-    echo waiting for docker to come up...
-    sleep 1
-  done
+  sleep 10
 }
 
 stop_docker() {
