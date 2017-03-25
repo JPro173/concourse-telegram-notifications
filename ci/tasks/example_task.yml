@@ -4,12 +4,11 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: python
+    repository: docker
     tag: latest
 
 inputs:
 - name: project
 
 run:
-  path: export
-  args: [VAR=123]
+  path: project/ci/scripts/example-task.sh
