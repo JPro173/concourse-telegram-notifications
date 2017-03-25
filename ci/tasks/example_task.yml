@@ -10,10 +10,5 @@ image_resource:
 inputs:
 - name: project
 
-put: telegram-notification
-params:
-  chat_id: -1001100069062
-  text: "123"
-
 run:
   path: project/ci/scripts/example-task.sh
